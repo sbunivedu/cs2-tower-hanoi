@@ -2,11 +2,13 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+// Another version using "staks" of numbers to represent the towers
 public class TowersOfHanoi1 {
   static Deque<Integer> start = new LinkedList<Integer>();
   static Deque<Integer> end = new LinkedList<Integer>();
   static Deque<Integer> middle = new LinkedList<Integer>();
   static Scanner scanner = new Scanner(System.in);
+
   public static void main(String[] args){
     start.push(5);
     start.push(4);
