@@ -1,11 +1,13 @@
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class TowersOfHanoi1 {
+  static Deque<Integer> start = new LinkedList<Integer>();
+  static Deque<Integer> end = new LinkedList<Integer>();
+  static Deque<Integer> middle = new LinkedList<Integer>();
+  static Scanner scanner = new Scanner(System.in);
   public static void main(String[] args){
-    Deque<Integer> start = new LinkedList<Integer>();
-    Deque<Integer> end = new LinkedList<Integer>();
-    Deque<Integer> middle = new LinkedList<Integer>();
     start.push(5);
     start.push(4);
     start.push(3);
@@ -16,14 +18,32 @@ public class TowersOfHanoi1 {
     System.out.println("end:"+end);
   }
 
-  public static void move(Deque<Integer> start, Deque<Integer> end, 
-    Deque<Integer> middle, int n){
+  public static void move(Deque<Integer> s, Deque<Integer> e,
+    Deque<Integer> m, int n){
     if(n==1){
-      end.push(start.pop());
+      e.push(s.pop());
+      display();
     }else{
-      move(start, middle, end, n-1);
-      end.push(start.pop());
-      move(middle, end, start, n-1);
+      move(s, m, e, n-1);
+      e.push(s.pop());
+      display();
+      move(m, e, s, n-1);
     }
+  }
+  public static void display(){
+    System.out.print("\033\143"); //clear console
+    System.out.println("start :"+toString(start));
+    System.out.println("middle:"+toString(middle));
+    System.out.println("end   :"+toString(end));
+    System.out.println("--------");
+    scanner.nextLine();
+  }
+
+  private static String toString(Deque<Integer> stack) {
+    String result = "";
+    for (Integer i : stack) {
+      result = i+" "+result;
+    }
+    return result;
   }
 }
