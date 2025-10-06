@@ -15,9 +15,10 @@ public class TowersOfHanoi1 {
     start.push(3);
     start.push(2);
     start.push(1);
-    System.out.println("start:"+start);
+    display();
     move(start, end, middle, start.size());
-    System.out.println("end:"+end);
+    display();
+    scanner.close();
   }
 
   public static void move(Deque<Integer> s, Deque<Integer> e,
@@ -32,12 +33,13 @@ public class TowersOfHanoi1 {
       move(m, e, s, n-1);
     }
   }
+
   public static void display(){
     System.out.print("\033\143"); //clear console
     System.out.println("start :"+toString(start));
     System.out.println("middle:"+toString(middle));
     System.out.println("end   :"+toString(end));
-    System.out.println("--------");
+    System.out.println("Press Enter to continue");
     scanner.nextLine();
   }
 
